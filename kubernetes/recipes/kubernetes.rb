@@ -3,6 +3,7 @@ bash 'install_kubernetes' do
   cwd '/tmp'
   code <<-EOH
   if ! [[ $(ls /usr/local/bin/kube*) ]]; then
+    yum install wget -y
     wget --max-redirect 255 https://github.com/GoogleCloudPlatform/kubernetes/releases/download/v#{node['kubernetes']['version']}/kubernetes.tar.gz
     tar zxvf kubernetes.tar.gz
     cd kubernetes/server

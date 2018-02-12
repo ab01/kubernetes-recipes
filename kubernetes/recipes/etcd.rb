@@ -3,6 +3,7 @@ bash 'install_etcd' do
   cwd '/tmp'
   code <<-EOH
   if [ ! -f /usr/local/bin/etcd ]; then
+    yum install wget -y
     wget --max-redirect 255 https://github.com/coreos/etcd/releases/download/v2.2.5/etcd-v2.2.5-linux-amd64.tar.gz
     tar zxvf etcd-v2.2.5-linux-amd64.tar.gz
     cd etcd-v2.2.5-linux-amd64

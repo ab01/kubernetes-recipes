@@ -6,7 +6,9 @@ bash 'install_kubernetes' do
     yum install wget -y
     wget --max-redirect 255 https://github.com/GoogleCloudPlatform/kubernetes/releases/download/v#{node['kubernetes']['version']}/kubernetes.tar.gz
     tar zxvf kubernetes.tar.gz
-    cd kubernetes/server
+    cd kubernetes/cluster
+    echo 'Y' | ./get-kube-binaries.sh
+    cd ../server
     tar zxvf kubernetes-server-linux-amd64.tar.gz
   fi
   EOH

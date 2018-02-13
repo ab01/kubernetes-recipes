@@ -36,7 +36,7 @@ hostname=`hostname`
 logfile=/var/log/k8s
 
 CLUSTER_NAME=my-happy-cluster
-ETCD_SERVERS="<%= @etcd_server %>>"
+ETCD_SERVERS="<%= @etcd_server %>"
 CLUSTER_IP_RANGE="<%= @cluster_cidr %>"
 MASTER="127.0.0.1:8080"
 
@@ -53,9 +53,8 @@ start() {
 	--service-cluster-ip-range=${CLUSTER_IP_RANGE} \
 	--insecure-port=8080 \
 	--secure-port=6443 \
-	--address=0.0.0.0 \
+	--insecure-bind-address=0.0.0.0 \
 	--etcd_servers=${ETCD_SERVERS} \
-	--cluster_name=${CLUSTER_NAME} \
 	> ${logfile}-apiserver.log 2>&1 &
 	
 	echo $"Starting controller-manager: "

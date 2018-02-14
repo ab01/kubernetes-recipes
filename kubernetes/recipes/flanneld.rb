@@ -5,7 +5,7 @@ bash 'install_flannel' do
   if [ ! -f /usr/local/bin/flanneld ]; then
     yum install wget -y
     wget --max-redirect 255 https://github.com/coreos/flannel/releases/download/v0.8.0/flannel-v0.8.0-linux-amd64.tar.gz
-    tar zxvf flannel-0.8.0-linux-amd64.tar.gz
+    tar zxvf flannel-v0.8.0-linux-amd64.tar.gz
     cp flanneld /usr/local/bin
     cp mk-docker-opts.sh /opt/
   fi
